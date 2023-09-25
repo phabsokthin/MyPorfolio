@@ -106,11 +106,11 @@ function NavigationBar() {
         <>
 
 
-            <header className={`${bg ? 'bg-blue-700/90 md:text-white  lg:py-2' : 'bg-blue text-black'} fixed  left-0 w-full py-2 z-10 transition-all duration-200`}>
+            <header className={`${bg ? 'bg-blue-700/90 md:text-white py-2 lg:py-2' : 'bg-blue text-black'} fixed  left-0 w-full py-2 z-10 transition-all duration-200`}>
                 <div className="container mx-auto">
-                    <div className='flex justify-between md:justify-between lg:justify-around p-4 '>
+                    <div className='flex justify-between mr-[2rem] md:justify-between lg:justify-around p-4 '>
                         <a href="#" className={`${bg ? 'text-white text-4xl' : 'text-orange-500 text-4xl'}  font-modi`}>Porfolio</a>
-                        <div onClick={() => setMoileNav(!mobileNav)} className={`${bg ? 'text-white' : 'text-black'} text-2xl md:hidden lg:text-3xl  cursor-pointer`}>
+                        <div onClick={() => setMoileNav(!mobileNav)} className={`${bg ? 'text-white' : 'text-black'} text-2xl md:hidden mt-2 lg:text-3xl  cursor-pointer`}>
                             {mobileNav ? <CgClose /> : <CgMenuRight />}
                         </div>
                         {/* for navbar */}
@@ -121,7 +121,7 @@ function NavigationBar() {
                                     return (
 
                                         <li key={index}>
-                                            <a href={item.href} className={`${bg ? 'hover:border-b hover:border-white' : 'hover:border-b hover:border-black'} duration-400  transition-all ease-in-out font-modi1`}>{item.names}</a>
+                                            <a href={item.href} className={`${bg ? 'hover:border-b hover:border-white' : 'hover:border-b hover:border-black'} duration-400  transition-all  ease-in-out font-modi1`}>{item.names}</a>
                                         </li>
 
                                     )
@@ -130,7 +130,7 @@ function NavigationBar() {
                         </nav>
                         {/* Mobile */}
 
-                        <div className={`${mobileNav ? 'left-0' : '-left-full'} md:hidden fixed w-full z-50 h-screen max-w-xs bottom-0 transition-all`}>
+                        <div className={`${mobileNav ? 'left-0' : '-left-full'} md:hidden fixed w-full h-screen max-w-xs bottom-0 transition-all`}>
 
                             <NavMobiles />
                         </div>
