@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react'
 
 import { CgMenuRight, CgClose } from 'react-icons/cg';
-import { CvTitle, NavData, Profile } from './Data';
+import { CvTitle, NavData, Profile, cardTitle } from './Data';
 import NavMobiles from './NavMobiles';
 import { SiGamedeveloper } from 'react-icons/si'
 import { motion } from 'framer-motion'
 import Cv from './image/Cv.png'
 import BlueCeo from './image/BlueCeo.png'
+import { BiSolidPencil, BiPhotoAlbum } from 'react-icons/bi'
+import { HiComputerDesktop } from 'react-icons/hi2'
+import { SiCoinmarketcap } from 'react-icons/si'
+import { MdOutlineManageAccounts, MdComputer } from 'react-icons/md'
+import blog1 from './image/blog1.jpg'
+import blog2 from './image/blog2.jpg'
+import blog4 from './image/blog4.jpg'
 
 
 
@@ -99,11 +106,11 @@ function NavigationBar() {
         <>
 
 
-            <header className={`${bg ? 'bg-blue-700 md:text-white py-2 lg:py-2' : 'bg-blue text-black'} fixed  left-0 w-full py-8 z-10 transition-all duration-200`}>
+            <header className={`${bg ? 'bg-blue-700/90 md:text-white  lg:py-2' : 'bg-blue text-black'} fixed  left-0 w-full py-2 z-10 transition-all duration-200`}>
                 <div className="container mx-auto">
                     <div className='flex justify-between md:justify-between lg:justify-around p-4 '>
                         <a href="#" className={`${bg ? 'text-white text-4xl' : 'text-orange-500 text-4xl'}  font-modi`}>Porfolio</a>
-                        <div onClick={() => setMoileNav(!mobileNav)} className={`${bg ? 'text-white': 'text-black'} text-2xl md:hidden lg:text-3xl  cursor-pointer`}>
+                        <div onClick={() => setMoileNav(!mobileNav)} className={`${bg ? 'text-white' : 'text-black'} text-2xl md:hidden lg:text-3xl  cursor-pointer`}>
                             {mobileNav ? <CgClose /> : <CgMenuRight />}
                         </div>
                         {/* for navbar */}
@@ -114,7 +121,7 @@ function NavigationBar() {
                                     return (
 
                                         <li key={index}>
-                                            <a href={item.href} className='hover:border-b duration-400 hover:border-black transition-all ease-in-out font-modi'>{item.names}</a>
+                                            <a href={item.href} className={`${bg ? 'hover:border-b hover:border-white' : 'hover:border-b hover:border-black'} duration-400  transition-all ease-in-out font-modi1`}>{item.names}</a>
                                         </li>
 
                                     )
@@ -124,7 +131,7 @@ function NavigationBar() {
                         {/* Mobile */}
 
                         <div className={`${mobileNav ? 'left-0' : '-left-full'} md:hidden fixed w-full z-50 h-screen max-w-xs bottom-0 transition-all`}>
-                            
+
                             <NavMobiles />
                         </div>
                     </div>
@@ -338,10 +345,271 @@ function NavigationBar() {
                 </div>
             </section>
 
-            <section>
-                <h1 className='text-center'>Service</h1>
+            <section className='font-modi'>
+                <div className='text-center text-2xl mb-3 flex justify-center'>
+                    <p className='border-b-2 border-b-orange-500  ' style={{ width: "100px" }}>SERVICE</p>
+                </div>
+                <div className="container mx-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-4">
+                        <motion.div drag className="bg-gray-200/50 shadow p-5 rounded-xl hover:border-b-8 hover:border-b-gray-400 transition-all duration-all ease-in ease-out cursor-pointer">
+                            {cardTitle.map((item, index) => {
+
+                                return (
+                                    <motion.div key={index} className='text-center space-y-2'
+
+                                        initial={"offscreen"}
+                                        whileInView={"onscreen"}
+                                        viewport={{ once: false, amount: 0.5 }}
+                                        transition={{
+                                            staggerChildren: 0.5
+                                        }}
+
+
+                                    >
+                                        <div className='flex justify-center  items-center '>
+                                            <div className='h-12 w-12 rounded-full flex justify-center text-orange-500 bg-white items-center'>
+                                                <BiSolidPencil />
+                                            </div>
+                                        </div>
+                                        <motion.p variants={scrollAnimatedUp} className='font-bold'>{item.design}</motion.p>
+                                        <motion.p variants={scrollAnimatedUp} className='text-sm'>{item.design1}</motion.p>
+                                    </motion.div>
+                                )
+
+                            })}
+                        </motion.div>
+                        <motion.div drag className="bg-gray-200/50 shadow p-5 rounded-xl hover:border-b-8 hover:border-b-gray-400 transition-all duration-all ease-in ease-out cursor-pointer">
+                            {cardTitle.map((item, index) => {
+
+                                return (
+                                    <motion.div key={index} className='text-center space-y-2'
+
+                                        initial={"offscreen"}
+                                        whileInView={"onscreen"}
+                                        viewport={{ once: false, amount: 0.5 }}
+                                        transition={{
+                                            staggerChildren: 0.5
+                                        }}
+
+                                    >
+                                        <div className='flex justify-center  items-center '>
+                                            <div className='h-12 w-12 rounded-full flex justify-center text-orange-500 bg-white items-center'>
+                                                <HiComputerDesktop />
+                                            </div>
+                                        </div>
+                                        <motion.p variants={scrollAnimatedUp} className='font-bold'>{item.develop}</motion.p>
+                                        <motion.p variants={scrollAnimatedUp} className='text-sm'>{item.develop1}</motion.p>
+                                    </motion.div>
+                                )
+
+                            })}
+                        </motion.div>
+                        <motion.div drag dragConstraints={{ left: 10, top: 10, bottom: 10, right: 10 }} className="bg-gray-200/50 shadow p-5 rounded-xl hover:border-b-8 hover:border-b-gray-400 transition-all duration-all ease-in ease-out cursor-pointer">
+                            {cardTitle.map((item, index) => {
+
+                                return (
+                                    <motion.div key={index} className='text-center space-y-2'
+
+                                        initial={"offscreen"}
+                                        whileInView={"onscreen"}
+                                        viewport={{ once: false, amount: 0.5 }}
+                                        transition={{
+                                            staggerChildren: 0.5
+                                        }}
+
+                                    >
+                                        <div className='flex justify-center  items-center '>
+                                            <div className='h-12 w-12 rounded-full flex justify-center text-orange-500 bg-white items-center'>
+                                                <BiPhotoAlbum />
+                                            </div>
+                                        </div>
+                                        <motion.p variants={scrollAnimatedUp} className='font-bold'>{item.photo}</motion.p>
+                                        <motion.p variants={scrollAnimatedUp} className='text-sm'>{item.photo1}</motion.p>
+                                    </motion.div>
+                                )
+
+                            })}
+                        </motion.div>
+
+                        <motion.div drag dragConstraints={{ left: 0, right: 0, top: 0, right: 0 }} className="bg-gray-200/50 shadow p-5 rounded-xl hover:border-b-8 hover:border-b-gray-400 transition-all duration-all ease-in ease-out cursor-pointer">
+                            {cardTitle.map((item, index) => {
+
+                                return (
+                                    <motion.div key={index} className='text-center space-y-2'
+
+                                        initial={"offscreen"}
+                                        whileInView={"onscreen"}
+                                        viewport={{ once: false, amount: 0.5 }}
+                                        transition={{
+                                            staggerChildren: 0.5
+                                        }}
+
+                                    >
+                                        <div className='flex justify-center  items-center '>
+                                            <div className='h-12 w-12 rounded-full flex justify-center text-orange-500 bg-white items-center'>
+                                                <SiCoinmarketcap />
+                                            </div>
+                                        </div>
+                                        <motion.p variants={scrollAnimatedUp} className='font-bold'>{item.market}</motion.p>
+                                        <motion.p variants={scrollAnimatedUp} className='text-sm'>{item.market1}</motion.p>
+                                    </motion.div>
+                                )
+
+                            })}
+                        </motion.div>
+                        <motion.div drag="x" className="bg-gray-200/50 shadow p-5 rounded-xl hover:border-b-8 hover:border-b-gray-400 transition-all duration-all ease-in ease-out cursor-pointer">
+                            {cardTitle.map((item, index) => {
+
+                                return (
+                                    <motion.div key={index} className='text-center space-y-2'
+
+                                        initial={"offscreen"}
+                                        whileInView={"onscreen"}
+                                        viewport={{ once: false, amount: 0.5 }}
+                                        transition={{
+                                            staggerChildren: 0.5
+                                        }}
+
+                                    >
+                                        <div className='flex justify-center  items-center '>
+                                            <div className='h-12 w-12 rounded-full flex justify-center text-orange-500 bg-white items-center'>
+                                                <MdOutlineManageAccounts />
+                                            </div>
+                                        </div>
+                                        <motion.p variants={scrollAnimatedUp} className='font-bold'>{item.seo}</motion.p>
+                                        <motion.p variants={scrollAnimatedUp} className='text-sm'>{item.seo1}</motion.p>
+                                    </motion.div>
+                                )
+
+                            })}
+                        </motion.div>
+                        <motion.div drag="y" className="bg-gray-200/50 shadow p-5 rounded-xl hover:border-b-8 hover:border-b-gray-400 transition-all duration-all ease-in ease-out cursor-pointer">
+                            {cardTitle.map((item, index) => {
+
+                                return (
+                                    <motion.div key={index} className='text-center space-y-2'
+
+                                        initial={"offscreen"}
+                                        whileInView={"onscreen"}
+                                        viewport={{ once: false, amount: 0.5 }}
+                                        transition={{
+                                            staggerChildren: 0.5
+                                        }}
+
+                                    >
+                                        <div className='flex justify-center  items-center '>
+                                            <div className='h-12 w-12 rounded-full flex justify-center text-orange-500 bg-white items-center'>
+                                                <MdComputer />
+                                            </div>
+                                        </div>
+                                        <motion.p variants={scrollAnimatedUp} className='font-bold'>{item.wdo}</motion.p>
+                                        <motion.p variants={scrollAnimatedUp} className='text-sm'>{item.wdo1}</motion.p>
+                                    </motion.div>
+                                )
+
+                            })}
+                        </motion.div>
+                    </div>
+                </div>
             </section>
 
+            <section className='bg-gray-200/30 mt-[5rem] font-modi'>
+                <div className='text-center text-2xl mb-3 flex justify-center '>
+                    <p className='border-b-2 border-b-orange-500 mt-[4rem] ' style={{ width: "120px" }}>MY BLOG</p>
+                </div>
+                <div className="container mx-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 p-5">
+                        <motion.div className="bg-gray-200/50 shadow  rounded-xl hover:border-b-8 hover:border-b-gray-400 transition-all duration-all ease-in ease-out cursor-pointer">
+                            {cardTitle.map((item, index) => {
+
+                                return (
+                                    <motion.div key={index} className='text-center space-y-2'
+
+                                        initial={"offscreen"}
+                                        whileInView={"onscreen"}
+                                        viewport={{ once: false, amount: 0.5 }}
+                                        transition={{
+                                            staggerChildren: 0.5
+                                        }}
+
+
+                                    >
+                                        <img src={blog1} alt="" />
+                                        <div className='p-4 space-y-4'>
+                                            <motion.p variants={scrollAnimatedUp} className='font-bold text-2xl'>{item.blog}</motion.p>
+                                            <motion.p variants={scrollAnimatedUp} className='text-sm'>{item.design1}</motion.p>
+                                            <motion.button variants={scrollAnimatedUp} whileHover={{ scale: 1.1 }} transition={{ 
+                                                type: "spring",
+                                                duration: 0.5 
+                                                }} className='bg-orange-500 p-3 text-white rounded-full'>BLOG HERE</motion.button>
+                                        </div>
+
+                                    </motion.div>
+                                )
+
+                            })}
+                        </motion.div>
+                        <motion.div className="bg-gray-200/50 shadow rounded-xl hover:border-b-8 hover:border-b-gray-400 transition-all duration-all ease-in ease-out cursor-pointer">
+                            {cardTitle.map((item, index) => {
+
+                                return (
+                                    <motion.div key={index} className='text-center space-y-2'
+
+                                        initial={"offscreen"}
+                                        whileInView={"onscreen"}
+                                        viewport={{ once: false, amount: 0.5 }}
+                                        transition={{
+                                            staggerChildren: 0.5
+                                        }}
+
+                                    >
+                                        <img src={blog2} alt="" />
+                                        <div className='p-4 space-y-4'>
+                                            <motion.p variants={scrollAnimatedUp} className='font-bold text-2xl'>{item.blog1}</motion.p>
+                                            <motion.p variants={scrollAnimatedUp} className='text-sm'>{item.develop1}</motion.p>
+                                            <motion.button whileHover={{scale: 1.1}} transition={{
+                                                type:"spring",
+                                                duration: 0.5
+
+                                            }} variants={scrollAnimatedUp} className='border-2 border-gray-500 p-3 rounded-full'>BLOG HERE</motion.button>
+                                        </div>
+                                    </motion.div>
+                                )
+
+                            })}
+                        </motion.div>
+                        <motion.div className="bg-gray-200/50 shadow rounded-xl hover:border-b-8 hover:border-b-gray-400 transition-all duration-all ease-in ease-out cursor-pointer">
+                            {cardTitle.map((item, index) => {
+
+                                return (
+                                    <motion.div key={index} className='text-center space-y-2'
+
+                                        initial={"offscreen"}
+                                        whileInView={"onscreen"}
+                                        viewport={{ once: false, amount: 0.5 }}
+                                        transition={{
+                                            staggerChildren: 0.5
+                                        }}
+
+                                    >
+                                        <img src={blog4} alt="" />
+                                        <div className='p-4 space-y-4'>
+                                            <motion.p variants={scrollAnimatedUp} className='font-bold text-2xl'>{item.blog2}</motion.p>
+                                            <motion.p variants={scrollAnimatedUp} className='text-sm'>{item.photo1}</motion.p>
+                                            <motion.button variants={scrollAnimatedUp} whileHover={{scale: 1.1}} transition={{
+                                                type: "spring",
+                                                duration: 0.5
+                                            }} className='border-2 border-gray-500 p-3 rounded-full'>BLOG HERE</motion.button>
+                                        </div>
+                                    </motion.div>
+                                )
+
+                            })}
+                        </motion.div>
+
+                    </div>
+                </div>
+            </section>
 
         </>
     )
