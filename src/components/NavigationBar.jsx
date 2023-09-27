@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
 import { CgMenuRight, CgClose } from 'react-icons/cg';
-import { CvTitle, NavData, Profile, cardTitle } from './Data';
+import { CvTitle, NavData, Profile, cardTitle, myBlog } from './Data';
 import NavMobiles from './NavMobiles';
 import { SiGamedeveloper } from 'react-icons/si'
-import { motion } from 'framer-motion'
+import { motion, useScroll } from 'framer-motion'
 import Cv from './image/Cv.png'
 import BlueCeo from './image/BlueCeo.png'
 import { BiSolidPencil, BiPhotoAlbum } from 'react-icons/bi'
@@ -14,6 +14,12 @@ import { MdOutlineManageAccounts, MdComputer } from 'react-icons/md'
 import blog1 from './image/blog1.jpg'
 import blog2 from './image/blog2.jpg'
 import blog4 from './image/blog4.jpg'
+import profile from './image/Profile.jpg'
+import profile1 from './image/Profile1.jpg'
+import profile2 from './image/Profile2.jpg'
+
+import { BsFacebook, BsInstagram } from 'react-icons/bs'
+import { RiTwitterXFill } from 'react-icons/ri'
 
 
 
@@ -102,9 +108,29 @@ function NavigationBar() {
 
     })
 
+    const {scrollYProgress} = useScroll()
+
     return (
         <>
+            <motion.div
 
+                style={{
+
+                    scaleX: scrollYProgress,
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: 5,
+                    background: "orange",
+                    transformOrigin: "0%",
+                    zIndex: 20
+
+                }}
+
+
+            >
+            </motion.div>
 
             <header className={`${bg ? 'bg-blue-700/90 md:text-white py-2 lg:py-2' : 'bg-blue text-black'} fixed  left-0 w-full py-2 z-10 transition-all duration-200`}>
                 <div className="container mx-auto">
@@ -130,7 +156,7 @@ function NavigationBar() {
                         </nav>
                         {/* Mobile */}
 
-                        <div className={`${mobileNav ? 'left-0' : '-left-full'} md:hidden fixed w-full h-screen max-w-xs bottom-0 transition-all`}>
+                        <div className={`${mobileNav ? 'left-0 bottom-0' : '-left-full'} md:hidden fixed w-full h-full max-w-xs bottom-0 transition-all`}>
 
                             <NavMobiles />
                         </div>
@@ -538,10 +564,10 @@ function NavigationBar() {
                                         <div className='p-4 space-y-4'>
                                             <motion.p variants={scrollAnimatedUp} className='font-bold text-2xl'>{item.blog}</motion.p>
                                             <motion.p variants={scrollAnimatedUp} className='text-sm'>{item.design1}</motion.p>
-                                            <motion.button variants={scrollAnimatedUp} whileHover={{ scale: 1.1 }} transition={{ 
+                                            <motion.button variants={scrollAnimatedUp} whileHover={{ scale: 1.1 }} transition={{
                                                 type: "spring",
-                                                duration: 0.5 
-                                                }} className='bg-orange-500 p-3 text-white rounded-full'>BLOG HERE</motion.button>
+                                                duration: 0.5
+                                            }} className='bg-orange-500 p-3 text-white rounded-full'>BLOG HERE</motion.button>
                                         </div>
 
                                     </motion.div>
@@ -567,8 +593,8 @@ function NavigationBar() {
                                         <div className='p-4 space-y-4'>
                                             <motion.p variants={scrollAnimatedUp} className='font-bold text-2xl'>{item.blog1}</motion.p>
                                             <motion.p variants={scrollAnimatedUp} className='text-sm'>{item.develop1}</motion.p>
-                                            <motion.button whileHover={{scale: 1.1}} transition={{
-                                                type:"spring",
+                                            <motion.button whileHover={{ scale: 1.1 }} transition={{
+                                                type: "spring",
                                                 duration: 0.5
 
                                             }} variants={scrollAnimatedUp} className='border-2 border-gray-500 p-3 rounded-full'>BLOG HERE</motion.button>
@@ -596,7 +622,7 @@ function NavigationBar() {
                                         <div className='p-4 space-y-4'>
                                             <motion.p variants={scrollAnimatedUp} className='font-bold text-2xl'>{item.blog2}</motion.p>
                                             <motion.p variants={scrollAnimatedUp} className='text-sm'>{item.photo1}</motion.p>
-                                            <motion.button variants={scrollAnimatedUp} whileHover={{scale: 1.1}} transition={{
+                                            <motion.button variants={scrollAnimatedUp} whileHover={{ scale: 1.1 }} transition={{
                                                 type: "spring",
                                                 duration: 0.5
                                             }} className='border-2 border-gray-500 p-3 rounded-full'>BLOG HERE</motion.button>
@@ -606,6 +632,126 @@ function NavigationBar() {
 
                             })}
                         </motion.div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section className='font-modi'>
+                <div className='text-center text-2xl mb-3 flex justify-center '>
+                    <p className='border-b-2 border-b-orange-500 mt-[4rem] ' style={{ width: "120px" }}>MY BLOG</p>
+                </div>
+                <div style={{ marginTop: "4rem" }} className="container mx-auto">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 p-5">
+                        <div className='space-y-5'>
+                            <div className='flex gap-5'>
+                                <div className=''>
+                                    <div className='border-2 border-orange-500 rounded-full'>
+                                        <img className='rounded-full object-cover object-center w-16 h-16' src={profile} alt="" />
+                                    </div>
+                                </div>
+                                <div className='flex items-center'>
+                                    {myBlog.map((item, index) => {
+                                        return (
+                                            <div key={index}>
+                                                <motion.div
+
+                                                    initial={"offscreen"}
+                                                    whileInView={"onscreen"}
+                                                    viewport={{ once: false, amount: 0.5 }}
+                                                    transition={{ staggerChildren: 0.5 }}
+
+                                                >
+                                                    <motion.p variants={scrollAnimatedUp} className='font-bold text-1xl'>{item.names1}</motion.p>
+                                                    <motion.p variants={scrollAnimatedUp} className='text-sm text-gray-500'>{item.email1}</motion.p>
+                                                </motion.div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            </div>
+
+                            <div className='flex gap-5'>
+                                <div className=''>
+                                    <div className='border-2 border-orange-500 rounded-full'>
+                                        <img className='rounded-full object-cover object-center w-16 h-16' src={profile1} alt="" />
+                                    </div>
+                                </div>
+                                <div className='flex items-center'>
+                                    {myBlog.map((item, index) => {
+                                        return (
+                                            <div key={index}>
+                                                <motion.div
+
+                                                    initial={"offscreen"}
+                                                    whileInView={"onscreen"}
+                                                    viewport={{ once: false, amount: 0.5 }}
+                                                    transition={{ staggerChildren: 0.5 }}
+
+                                                >
+                                                    <motion.p variants={scrollAnimatedUp} className='font-bold text-1xl'>{item.names}</motion.p>
+                                                    <motion.p variants={scrollAnimatedUp} className='text-sm text-gray-500'>{item.email}</motion.p>
+                                                </motion.div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            </div>
+                            <div className='flex gap-5'>
+                                <div className=''>
+                                    <div className='border-2 border-orange-500 rounded-full'>
+                                        <img className='rounded-full object-cover object-center w-16 h-16' src={profile2} alt="" />
+                                    </div>
+                                </div>
+                                <div className='flex items-center'>
+                                    {myBlog.map((item, index) => {
+                                        return (
+                                            <div key={index}>
+                                                <motion.div
+
+                                                    initial={"offscreen"}
+                                                    whileInView={"onscreen"}
+                                                    viewport={{ once: false, amount: 0.5 }}
+                                                    transition={{ staggerChildren: 0.5 }}
+
+                                                >
+                                                    <motion.p variants={scrollAnimatedUp} className='font-bold text-1xl'>{item.names2}</motion.p>
+                                                    <motion.p variants={scrollAnimatedUp} className='text-sm text-gray-500'>{item.email3}</motion.p>
+                                                </motion.div>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+                        <div className=' col-span-2 space-y-3'>
+                            <div className="grid grid-cols-2 gap-3 ">
+                                <div className=''>
+                                    {/* <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label> */}
+                                    <input type="text" id="first_name" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Username" required />
+                                </div>
+                                <div className=''>
+                                    {/* <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label> */}
+                                    <input type="text" id="first_name" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter your email here..." required />
+                                </div>
+                            </div>
+                            {/* <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label> */}
+                            <textarea id="message" rows="8" class="block p-2.5 w-full text-sm text-gray-900  rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className='bg-gray-200 p-10'>
+                <div className="container mx-auto flex justify-between">
+                    <div className=''>
+                        <h1>&#169;Copy-Right 2023 By <span className='font-bold'>Thin Developer</span> </h1>
+                    </div>
+                    <div className='flex gap-x-5'>
+                        <BsFacebook />
+                        <RiTwitterXFill />
+                        <BsInstagram />
 
                     </div>
                 </div>

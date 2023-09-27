@@ -72,3 +72,15 @@ export const cardTitle = [
     }
 ]
 
+
+export const myBlog = [
+    {
+        names: "Devid Lady",
+        email: "Devidlady123@gmail.com",
+        names1: "John Rocker",
+        email1: "Johnrocker154@gmail.com",
+        names2: "Lavuna Ginu",
+        email3: "Lavunaginu123@gmail.com"
+    }
+]
+
